@@ -1,0 +1,10 @@
+#GCE install ingress-ignix
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.1/deploy/static/provider/cloud/deploy.yaml
+
+#create secret command
+#the secret key-value will be assigned as a env variable
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=abcd
+kubectl get secrets
+
+#create port forward, to avoid writing configuration for NodePort service or ingree-nginx
+kubectl port-fowrad <pod_name> <local_port>:<target_port> ( require socat been installed )

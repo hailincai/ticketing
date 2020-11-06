@@ -1,0 +1,22 @@
+1) create google account
+2) install gcloud sdk
+   2.1) download gcloud sdk gz file
+   2.2) unzip 
+   2.3) run ./install.sh
+   2.4) new terminal
+   2.5) gcloud auth application-default login ( make sure the skaffold can find default credential ) | gcloud auth login
+   2.6) gclound init
+3) create kubernetes cluster in google, then import kubectl context ( the command can be found in the kubernets cluster in gcp )
+4) in local machine use : kubectl config get-contexts ( list all context ), kubectl config use-context < context_name > to connect
+5) enable google cloud build at gcp
+6) update skaffold to talk to google cloud build
+   6.1) add googleCloundBuild section
+   6.2) change image name to us.gcr.io/<projectId>/<name>
+7) setup ingress-nginx at gcp cluster
+   7.1) https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke
+   7.2) find ip through gcp load balancing and put in /etc/hosts
+
+* kubectl config is under ~/.kube/config
+ gcloud components update --version 312.0.0
+
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=abc
